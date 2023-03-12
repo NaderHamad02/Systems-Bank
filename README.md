@@ -31,5 +31,28 @@ Customers of systems bank will want to use their software as they can perform da
 ![creatingarraylist](https://user-images.githubusercontent.com/126388847/221423837-8468c34c-64c2-4048-a93f-ed7986b2a2ea.PNG)
 
 
+# PART 2
+## Queue for loans
+![image](https://user-images.githubusercontent.com/126397889/224566945-9934f267-1471-4d21-b198-017ad4f9d2f1.png)
 
+
+## LinkedList for transfers
+![image](https://user-images.githubusercontent.com/126397889/224566961-541ca14f-0c50-4c8c-9a35-663ba44758f3.png)
+
+
+# PART 3
+## Binary Search Tree to Contain Logs
+![image](https://user-images.githubusercontent.com/126397889/224567128-a3a8f448-e346-4c6c-a0d6-d9fe08ef1c06.png)
+![image](https://user-images.githubusercontent.com/126397889/224567171-9e594b12-436d-421d-8f5f-3456dc939ab9.png)
+
+
+## Hashtable to contain Accounts
+![image](https://user-images.githubusercontent.com/126397889/224567100-5edd8419-18b6-4c17-ba00-0ea9c0c8d3d3.png)
+
+![image](https://user-images.githubusercontent.com/126397889/224567063-50416d0c-aabd-4d4f-a8e4-59bbeb965648.png)
+
+# PART 4
+
+## DB access for logs persistence
+![log-persistence](https://user-images.githubusercontent.com/126397889/224567281-39a6f2e0-27c9-45a6-9a4b-48ed41f84dfe.PNG)
 
