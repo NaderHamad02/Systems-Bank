@@ -10,29 +10,31 @@
    <children>
       <Pane layoutY="-9.0" prefHeight="410.0" prefWidth="204.0" style="-fx-background-color: #634087;">
          <children>
-            <Button fx:id="returnButton" layoutX="47.0" layoutY="270.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="110.0" style="-fx-background-color: #deb7ff; -fx-background-radius: 20;">
+            <Button fx:id="returnButton" layoutX="47.0" layoutY="270.0" mnemonicParsing="false" onAction="#goBackToLogin" prefHeight="54.0" prefWidth="110.0" style="-fx-background-color: #deb7ff; -fx-background-radius: 20;">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="51.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/9023747_key_return_fill_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <ImageView fitHeight="54.0" fitWidth="120.0" layoutX="75.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/9023747_key_return_fill_icon.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="viewAccounts" layoutX="11.0" layoutY="48.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="183.0" style="-fx-background-color: #deb7ff; -fx-background-radius: 20;" text="View Accounts">
+            <Button fx:id="viewAccounts" layoutX="11.0" layoutY="48.0" mnemonicParsing="false" onAction="#viewAccounts" prefHeight="54.0" prefWidth="183.0" style="-fx-background-color: #deb7ff; -fx-background-radius: 20;" text="View Accounts">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <Button fx:id="resolveTransfers" layoutX="300.0" layoutY="256.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="183.0" style="-fx-background-color: #634087; -fx-background-radius: 20;" text="resolve all transfers" textFill="WHITE">
+      <Button fx:id="resolveTransfers" layoutX="300.0" layoutY="256.0" mnemonicParsing="false" onAction="#goToTransfers" prefHeight="54.0" prefWidth="183.0" style="-fx-background-color: #634087; -fx-background-radius: 20;" text="resolve all transfers" textFill="WHITE">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="resolveTransactions" layoutX="300.0" layoutY="142.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="183.0" style="-fx-background-color: #634087; -fx-background-radius: 20;" text="resolve all transactions" textFill="WHITE">
+      <Button fx:id="resolveLoans" layoutX="300.0" layoutY="142.0" mnemonicParsing="false" onAction="#goToLoans" prefHeight="54.0" prefWidth="183.0" style="-fx-background-color: #634087; -fx-background-radius: 20;" text="resolve all Loans" textFill="WHITE">
          <font>
             <Font name="Arial" size="14.0" />
          </font>

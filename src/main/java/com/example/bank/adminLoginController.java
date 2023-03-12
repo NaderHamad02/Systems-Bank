@@ -8,41 +8,44 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class accountsController implements Initializable {
+public class adminLoginController implements Initializable {
 
     @FXML
-    private ListView<String> accounts;
+    private Button loginAdmin;
+    @FXML
+    private Button goBack;
+    @FXML
+    private TextField password;
 
     @FXML
-    private Label message;
-
-    @FXML
-    private Button returnButton;
-    Bank bk;
+    private TextField username;
     private Stage primaryStage;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            bk=Bank.getInstance();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    private Bank bk;
+
+    @FXML
+    void loginAdmin(ActionEvent event) throws IOException {
+        boolean check=bk.admin.Authenticate(username.getText(),password.getText());
+        System.out.println("check: "+check);
+
+
+        if(check)
+        {
+            changeScene("adminDashboard.fxml",event);
         }
-        ArrayList<String> arr=bk.returnAccountsList();
-      accounts.getItems().addAll(arr);
+
     }
     @FXML
-    void goBackToAdminDashboard(ActionEvent event) throws IOException {
-       changeScene("adminDashboard.fxml",event);
+    void goBackToDashboard(ActionEvent event) throws IOException {
+
+        changeScene("LandingPage.fxml",event);
     }
     public void changeScene(String fxml, ActionEvent event) throws IOException {
 
@@ -53,6 +56,16 @@ public class accountsController implements Initializable {
         this.primaryStage.setScene(scene);
         this.primaryStage.show();
         //-----------------------------------------------------
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            bk=Bank.getInstance();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

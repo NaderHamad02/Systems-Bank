@@ -14,7 +14,9 @@ public class Admin {
 
     public boolean Authenticate(String username,String password)
     {
-        return true;
+        if(username.equals(this.username) && password.equals(this.password))
+            return true;
+        return false;
     }
     public void resolveTransactions()
     {

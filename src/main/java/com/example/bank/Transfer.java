@@ -75,4 +75,11 @@ public class Transfer {
     public Account getToAccount() {
         return toAccount;
     }
+    public String getLog()
+    {
+        String res="";
+        res+=date+" "+"From: "+account.account_number+" TO: "+toAccount.account_number+" "+" Transfer amount: "+amount+"\n";
+        return res;
+    }
+
 }

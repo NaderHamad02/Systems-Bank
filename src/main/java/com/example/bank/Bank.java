@@ -8,18 +8,21 @@ import java.util.*;
 public class Bank {
     static Bank bk;
     Admin admin;
-    hashtable accounts;
+    hashtable<String,Account> accounts;
 
     Queue<Loan> loanQueue;
 
     ArrayList<Transfer> transfers;
 
+    Account current;
+    databaseAccess db;
 
-    public static  Bank getInstance()
-    {
+
+    public static  Bank getInstance() throws IOException {
         if(bk==null)
         {
             bk=new Bank();
+            bk.ReadFile();
 
         }
         return bk;
@@ -27,110 +30,13 @@ public class Bank {
     private Bank()
     {
         admin=new Admin();
-        accounts=new hashtable();
+        admin.setUsername("Admin");
+        admin.setPassword("1234");
+        accounts=new hashtable<String,Account>();
         transfers=new ArrayList<Transfer>();
-        loanQueue = new Queue<Loan>() {
-            @Override
-            public int size() {
-                return 0;
-            }
-
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
-
-            @Override
-            public Iterator<Loan> iterator() {
-                return null;
-            }
-
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
-
-            @Override
-            public <T> T[] toArray(T[] a) {
-                return null;
-            }
-
-            @Override
-            public boolean add(Loan loan) {
-                return false;
-            }
-
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
-
-            @Override
-            public boolean containsAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(Collection<? extends Loan> c) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public boolean equals(Object o) {
-                return false;
-            }
-
-            @Override
-            public int hashCode() {
-                return 0;
-            }
-
-            @Override
-            public boolean offer(Loan loan) {
-                return false;
-            }
-
-            @Override
-            public Loan remove() {
-                return null;
-            }
-
-            @Override
-            public Loan poll() {
-                return null;
-            }
-
-            @Override
-            public Loan element() {
-                return null;
-            }
-
-            @Override
-            public Loan peek() {
-                return null;
-            }
-        };
-
+        loanQueue = new LinkedList<Loan>();
+        db=new databaseAccess();
+        current=null;
 
     }
     public void ReadFile() throws IOException {
@@ -166,11 +72,45 @@ public class Bank {
         }
         br.close();
 
-    }
-    public boolean SearchAccounts(String username, String account_number)
-    {
+        br = new BufferedReader(new FileReader("src\\main\\resources\\accounts.txt"));
+        line = br.readLine();
 
-        return true;
+        while ((line = br.readLine()) != null)   //returns a Boolean value
+        {
+            String[] obj = line.split(",");    // use comma as separator
+            Account obj1=new Account(obj[0],obj[1],obj[2],Float.parseFloat(obj[3]));
+            accounts.add(obj1.account_number,obj1);
+
+
+        }
+        br.close();
+
+    }
+    public Account SearchAccounts(String username, String account_number)
+    {
+        Account res = null;
+        res=accounts.get(account_number);
+        if(res!=null && res.name.equals(username))
+        {
+
+            return res;
+
+        }
+
+        return null;
+    }
+    public Account getAccount( String account_number)
+    {
+        Account res = null;
+        res=accounts.get(account_number);
+        if(res!=null )
+        {
+
+            return res;
+
+        }
+
+        return null;
     }
     void merge(ArrayList<Transfer> trans, int l, int m, int r)
     {
@@ -246,6 +186,11 @@ public class Bank {
             merge(trans, l, m, r);
         }
     }
+    public void saveLogs(int acc_id, int key, String log)
+    {
+        db.setlogs(acc_id,key,log);
+        //db.setlogs();
+    }
 
     public ArrayList<String>returnTransactionsList()
     {
@@ -255,9 +200,18 @@ public class Bank {
     public ArrayList<String>returnAccountsList()
     {
 
-        ArrayList<String> result = null;
+        ArrayList<String> result = new ArrayList<String>();
+        ArrayList<Account> acc=accounts.getValue();
+        for(int i=0 ; i<acc.size() ;i++)
+        {
+            result.add(acc.get(i).getAccountLog());
+        }
         return result;
 
+    }
+    public void addTransfer(Transfer tf)
+    {
+        transfers.add(tf);
     }
     public void SortTransfers()
     {

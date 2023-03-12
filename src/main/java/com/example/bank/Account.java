@@ -25,6 +25,12 @@ float credit;
         credit=cre;
 
     }
+    public String getAccountLog()
+    {
+        String val="";
+        val+=name+" "+address+" "+account_number+" credit: "+credit;
+        return val;
+    }
     public Account() {
        
         logs = new Logs();
@@ -35,7 +41,7 @@ float credit;
  {
 
  }
- public void makeTransfer(float amount, String toAccountHolder,String description)
+ public void makeTransfer(float amount, Account toAccountHolder,String description)
  {
 
  }
@@ -71,21 +77,21 @@ float credit;
         return account_number;
     }
 
-    public Logs getLogs() {
-        return logs;
-    }
+    public Logs getLogs(){return logs;
+        }
     public void deduct(float amount)
     {
-
+       credit-=amount;
     }
     public void add(float amount)
     {
-
+         credit+=amount;
     }
 
     public float getCredit() {
         return credit;
     }
+    //support funnction to see output on terminal and not on gui
     public void Print()
     {
 
@@ -94,8 +100,10 @@ float credit;
     {
         return true;
     }
+    //support funnction to see output on terminal and not on gui
     public void ViewLogs()
     {
+
 
     }
 }

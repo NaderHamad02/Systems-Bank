@@ -11,27 +11,29 @@
    <children>
       <Pane layoutY="-9.0" prefHeight="410.0" prefWidth="204.0" style="-fx-background-color: #634087;">
          <children>
-            <Button fx:id="makeTransaction" layoutX="14.0" layoutY="81.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="176.0" style="-fx-background-color: #deb7ff; -fx-background-radius: 20;" text="Make Transaction">
+            <Button fx:id="makeLoan" layoutX="14.0" layoutY="81.0" mnemonicParsing="false" onAction="#goToLoan" prefHeight="54.0" prefWidth="176.0" style="-fx-background-color: #deb7ff; -fx-background-radius: 20;" text="Make Loan Request">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="makeTransfer" layoutX="14.0" layoutY="151.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="176.0" style="-fx-background-color: #deb7ff; -fx-background-radius: 20;" text="Make Transfer">
+            <Button fx:id="makeTransfer" layoutX="14.0" layoutY="151.0" mnemonicParsing="false" onAction="#goToTransfer" prefHeight="54.0" prefWidth="176.0" style="-fx-background-color: #deb7ff; -fx-background-radius: 20;" text="Make Transfer">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="returnButton" layoutX="47.0" layoutY="289.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="110.0" style="-fx-background-color: #deb7ff; -fx-background-radius: 20;">
+            <Button fx:id="returnButton" layoutX="47.0" layoutY="289.0" mnemonicParsing="false" onAction="#goToDashboard" prefHeight="54.0" prefWidth="110.0" style="-fx-background-color: #deb7ff; -fx-background-radius: 20;">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="54.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/9023747_key_return_fill_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <ImageView fitHeight="54.0" fitWidth="120.0" layoutX="73.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/9023747_key_return_fill_icon.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="logs" layoutX="14.0" layoutY="219.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="176.0" style="-fx-background-color: #deb7ff; -fx-background-radius: 20;" text="View Logs">
+            <Button fx:id="logs" layoutX="14.0" layoutY="219.0" mnemonicParsing="false" onAction="#goToLogs" prefHeight="54.0" prefWidth="176.0" style="-fx-background-color: #deb7ff; -fx-background-radius: 20;" text="View Logs">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>

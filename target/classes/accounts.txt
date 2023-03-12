@@ -1,0 +1,4 @@
+Name,Address,account_number,credit
+Zoha,140 Melbon Street,1,30000
+Raheem,170 Taurus Street,133,100000
+Kareem,190 Firdous Street,144,80000

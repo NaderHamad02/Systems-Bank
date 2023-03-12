@@ -1,3 +1,1 @@
 amount,description,date,account_holder,sent_to_account
-200,for fridge,2:12:2023,13424539364467,13368887844676
-400,for cups,4:12:2023,13368887844676,13424539364467
